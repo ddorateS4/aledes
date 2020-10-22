@@ -1,0 +1,53 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ folder }}</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <div class="dMainCont" [class.list]="listDisplay">
+    <button class="dMainMenuBtn" (click)="_toggleListMenu()"><img src="assets/icons/menu-sharp.svg"/></button>
+    <button class="dAboutBtn" *ngIf="!about" (click)="_openAbout()"><img src="assets/icons/alert-circle-sharp.svg"/></button>
+    <button class="dAboutBtn" *ngIf="about" (click)="_openAbout()"><img src="assets/icons/close-sharp.svg"/></button>
+    <div class="dImageCont">
+        <img [src]="curImage" class="cur"/>
+    </div>
+    <div class="dExtraInfo">
+        <div class="title">{{curSong.name}}</div>
+        <div class="artist">{{curSong.artist}}</div>
+    </div>
+    <div class="dControllerCont">
+          <div class="title">{{curSong.name}}</div>
+          <div class="menu">
+              <button class="dBtn" (click)="_playPrev()"><img src="assets/icons/play-skip-back-sharp.svg"/></button>
+              <button class="dBtn" *ngIf="!playing" (click)="_playing(1)"><img src="assets/icons/play-sharp.svg"/></button>
+              <button class="dBtn" *ngIf="playing" (click)="_playing(0)"><img src="assets/icons/pause-sharp.svg"/></button>
+              <button class="dBtn" (click)="_playNext()"><img src="assets/icons/play-skip-forward-sharp.svg"/></button>
+          </div>
+          <div class="dMusicList" *ngIf="listDisplay">
+              <div class="body">
+                  <div class="item" *ngFor="let song of listSongs" [class.active]="song.active" (click)="_playSong(song)">
+                    <div class="name">{{song.name}}</div>
+                    <div class="time">{{song.time}}</div>
+                  </div>
+              </div>
+          </div>
+    </div>
+
+    <div class="dAbout" [class.open]="about">
+        <div class="body">
+            <img src="assets/photo/alex6.jpg"/>
+            <div class="note">
+               <div class="title">ABOUT THIS APP</div>
+               <div class="content">This app is dedicated to my mother (<strong><em>Lourdes B. Orate</em></strong>) and it contains photos and favorite songs of my late father.</div>
+               <div class="endTxt">Hope you'll like it ma!</div>
+            </div>
+            <div class="dev"><div>Developed by your beloved son</div><div>Dexter Don Orate</div></div>
+        </div>
+    </div>
+
+</div>
+</ion-content>
